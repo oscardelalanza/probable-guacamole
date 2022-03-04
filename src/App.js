@@ -1,6 +1,27 @@
+import { createContext, useContext } from 'react'
+
+const Context = createContext('default value')
+
+const Provider = ({ children }) => {
+  return (
+    <Context.Provider value={'my value 2'}>
+      {children}
+    </Context.Provider>
+  )
+}
+
+const Content = () => {
+  const ctx = useContext(Context);
+  return (
+    <div>{ctx}</div>
+  )
+}
+
 function App() {
   return (
-    <div>Hello World</div>
+    <Provider>
+      <Content />
+    </Provider>
   )
 }
 
